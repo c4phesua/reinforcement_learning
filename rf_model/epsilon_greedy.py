@@ -16,11 +16,11 @@ class EpsilonGreedy:
                 return np.argmax(q_value)
             return max([[q_value[a], a] for a in action_space], key=lambda x: x[0])[1]
 
-    def decay(self, decayValue, lowerBound):
+    def decay(self, decay_value, lower_bound):
         """
         Adjust the epsilon value by the formula: epsilon = max(decayValue * epsilon, lowerBound).
-        :param decayValue: Value ratio adjustment (0, 1).
-        :param lowerBound: Minimum epsilon value.
+        :param decay_value: Value ratio adjustment (0, 1).
+        :param lower_bound: Minimum epsilon value.
         :return: None
         """
-        self.epsilon = max(self.epsilon * decayValue, lowerBound)
+        self.epsilon = max(self.epsilon * decay_value, lower_bound)
