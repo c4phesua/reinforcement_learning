@@ -21,11 +21,12 @@ if __name__ == '__main__':
     agent.target_network.compile(optimizer=op2, loss=losses.mean_squared_error)
     agent.update_target_network()
     count = 0
-    for ep in range(130):
+    for ep in range(200):
         state = env.reset()
         done = False
         print(ep, '------------------', 'current epsilon: ', agent.epsilon_greedy.epsilon)
         while not done:
+            env.render()
             action = agent.observe_on_training(state)
             state, reward, done, _ = env.step(action)
             if state[0] < -0.4:
