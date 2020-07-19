@@ -29,10 +29,6 @@ if __name__ == '__main__':
             env.render()
             action = agent.observe_on_training(state)
             state, reward, done, _ = env.step(action)
-            if state[0] < -0.4:
-                reward = 0
-            else:
-                reward = 1 + state[0]
             print(ep, '-----------------------------------', reward)
             agent.take_reward(reward, state, done)
             agent.train_network(32, 4, 4)
