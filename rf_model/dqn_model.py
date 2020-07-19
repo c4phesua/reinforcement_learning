@@ -1,6 +1,6 @@
 from rf_model.baseModel import BaseModel
-from rf_model.epsilon_greedy import EpsilonGreedy
-from rf_model.experience_replay import ExperienceReplay
+from addon.epsilon_greedy import EpsilonGreedy
+from addon.experience_replay import ExperienceReplay
 from tensorflow.keras import Sequential
 import numpy as np
 
