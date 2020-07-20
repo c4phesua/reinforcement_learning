@@ -8,5 +8,5 @@ setup(
     license='MIT License',
     author='Carokann',
     author_email='th1475369@gmail.com',
-    description='Implementation of some reinforcement learning algorithms'
+    description='Implementation of some reinforcement learning algorithms',
 )
