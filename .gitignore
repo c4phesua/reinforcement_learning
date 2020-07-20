@@ -214,4 +214,4 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 # add run.py
-run.py
+test_package
