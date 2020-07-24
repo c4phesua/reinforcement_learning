@@ -38,7 +38,8 @@ class DQN(BaseModel):
             # state_samples, action_samples, reward_samples, next_state_samples, done_samples
             s_batch, a_batch, r_batch, ns_batch, done_batch = self.exp_replay.sample_experience(sample_size)
             states, q_values = self.replay(s_batch, a_batch, r_batch, ns_batch, done_batch)
-            self.training_network.fit(states, q_values, epochs=epochs, batch_size=batch_size, verbose=verbose)
+            history = self.training_network.fit(states, q_values, epochs=epochs, batch_size=batch_size, verbose=verbose)
+            return history.history['loss']
 
     def replay(self, states, actions, rewards, next_states, terminals):
         q_values = self.target_network.predict(np.array(states))  # get q value at state t by target network
