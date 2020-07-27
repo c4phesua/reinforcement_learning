@@ -4,6 +4,8 @@ import random
 
 class ExperienceReplay:
     def __init__(self, e_max: int):
+        if e_max <= 0:
+            raise ValueError('Invalid value for buffer size')
         self.e_max = e_max
         self.memory = list()
         self.index = 0
