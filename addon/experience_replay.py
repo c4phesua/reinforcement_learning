@@ -19,8 +19,10 @@ class ExperienceReplay:
             self.memory[self.index] = sample
         self.index = (self.index + 1) % self.e_max
 
-    def sample_experience(self, sample_size: int):
+    def sample_experience(self, sample_size: int, cer_mode: bool):
         samples = random.sample(self.memory, sample_size)
+        if cer_mode:
+            samples[-1] = self.memory[self.index - 1]
         # state_samples, action_samples, reward_samples, next_state_samples, done_samples
         s_batch, a_batch, r_batch, ns_batch, done_batch = map(np.array, zip(*samples))
         return s_batch, a_batch, r_batch, ns_batch, done_batch

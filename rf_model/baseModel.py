@@ -56,7 +56,7 @@ class BaseModel(ABC):
         pass
 
     @abstractmethod
-    def train_network(self, sample_size: int, batch_size: int, epochs: int, verbose: int = 2):
+    def train_network(self, sample_size: int, batch_size: int, epochs: int, verbose: int = 2, cer_mode: bool = False):
         """
         :param sample_size: number of samples taken from Experience Replay.
         :param batch_size: Integer or `None`. Number of samples per gradient update. If unspecified,
@@ -70,6 +70,7 @@ class BaseModel(ABC):
         :param verbose: 0, 1, or 2. Verbosity mode. 0 = silent, 1 = progress bar, 2 = one line per epoch.
         Note that the progress bar is not particularly useful when logged to a file, so verbose=2 is recommended
         when not running interactively (eg, in a production environment).
+        :param cer_mode: Turn on or off cer (Combined Experience Replay). Default is False.
         :return: None
         """
         pass

@@ -33,10 +33,10 @@ class DQN(BaseModel):
         self.exp_replay.add_experience(self.cache.copy())
         self.cache.clear()
 
-    def train_network(self, sample_size: int, batch_size: int, epochs: int, verbose: int = 2):
+    def train_network(self, sample_size: int, batch_size: int, epochs: int, verbose: int = 2, cer_mode: bool = False):
         if self.exp_replay.get_size() >= self.e_min:
             # state_samples, action_samples, reward_samples, next_state_samples, done_samples
-            s_batch, a_batch, r_batch, ns_batch, done_batch = self.exp_replay.sample_experience(sample_size)
+            s_batch, a_batch, r_batch, ns_batch, done_batch = self.exp_replay.sample_experience(sample_size, cer_mode)
             states, q_values = self.replay(s_batch, a_batch, r_batch, ns_batch, done_batch)
             history = self.training_network.fit(states, q_values, epochs=epochs, batch_size=batch_size, verbose=verbose)
             return history.history['loss']
